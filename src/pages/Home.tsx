@@ -1,137 +1,190 @@
-import { Link } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useAuth } from '../contexts/AuthContext';
-import type { ReactElement } from 'react';
+import { type ReactElement } from 'react';
+
+const cardStyle = {
+  background: '#ffffff',
+  padding: '20px',
+  borderRadius: '16px',
+  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  marginBottom: '20px'
+};
 
 const Home = (): ReactElement => {
-  const { t } = useLanguage();
-  const { isLoggedIn } = useAuth();
-
   return (
-    <div className="home-page">
-      {/* Hero */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <span className="hero-badge">Vibe Coding Master</span>
-            <h1 className="hero-title">{t('home.hero')}</h1>
-            <p className="hero-subtitle">{t('home.heroSub')}</p>
-            <div className="hero-actions">
-              <Link to="/curriculum/beginner" className="btn btn-primary btn-lg">
-                학습 시작하기
-              </Link>
-              {!isLoggedIn && (
-                <Link to="/register" className="btn btn-outline btn-lg">
-                  회원가입
-                </Link>
-              )}
+    <div
+      style={{
+        background: '#f4f8ff',
+        minHeight: '100vh',
+        padding: '40px'
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}
+      >
+        <section
+          style={{
+            textAlign: 'center',
+            marginBottom: '50px'
+          }}
+        >
+          <h1
+            style={{
+              color: '#2563eb',
+              fontSize: '48px'
+            }}
+          >
+            바이브 코딩 (Vibe Coding)
+          </h1>
+
+          <p
+            style={{
+              fontSize: '20px'
+            }}
+          >
+            AI와 함께 개발하는 새로운 프로그래밍 방식
+          </p>
+        </section>
+
+        <div style={cardStyle}>
+          <h2>1. 바이브 코딩이란?</h2>
+
+          <p>
+            바이브 코딩(Vibe Coding)은 개발자가 자연어로 원하는 기능을 설명하면
+            AI가 코드를 생성하고 수정해주는 개발 방식이다.
+          </p>
+
+          <p>
+            기존에는 개발자가 직접 코드를 작성했지만,
+            이제는 ChatGPT, Claude, Cursor 등의 AI를 활용하여
+            더 빠르고 효율적으로 개발할 수 있다.
+          </p>
+        </div>
+
+        <div style={cardStyle}>
+          <h2>2. 주요 기능</h2>
+
+          <ul>
+            <li>자연어 기반 코드 생성</li>
+            <li>코드 자동 수정</li>
+            <li>버그 탐지 및 개선</li>
+            <li>UI 생성 지원</li>
+            <li>코드 리팩토링</li>
+          </ul>
+        </div>
+
+        <div style={cardStyle}>
+          <h2>3. 기술 스택</h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))',
+              gap: '15px'
+            }}
+          >
+            {[
+              'ChatGPT',
+              'Cursor',
+              'Claude',
+              'GitHub Copilot',
+              'HTML',
+              'CSS',
+              'JavaScript'
+            ].map((item) => (
+              <div
+                key={item}
+                style={{
+                  background: '#2563eb',
+                  color: 'white',
+                  padding: '15px',
+                  borderRadius: '12px',
+                  textAlign: 'center'
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={cardStyle}>
+          <h2>4. 프로젝트 구조</h2>
+
+          <ul>
+            <li>index.html - 웹페이지 시작 파일</li>
+            <li>style.css - 디자인 담당</li>
+            <li>script.js - 동작 기능 구현</li>
+            <li>images 폴더 - 이미지 저장</li>
+            <li>assets 폴더 - 리소스 저장</li>
+          </ul>
+        </div>
+
+        <div style={cardStyle}>
+          <h2>5. 개발 과정</h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))',
+              gap: '15px'
+            }}
+          >
+            {[
+              '요구사항 작성',
+              'AI 기능 요청',
+              '코드 생성',
+              '테스트',
+              '수정 및 개선',
+              '배포'
+            ].map((step, index) => (
+              <div
+                key={index}
+                style={{
+                  background: '#dbeafe',
+                  padding: '15px',
+                  borderRadius: '12px',
+                  textAlign: 'center'
+                }}
+              >
+                <h3>{index + 1}단계</h3>
+                <p>{step}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={cardStyle}>
+          <h2>6. 장점과 단점</h2>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '20px'
+            }}
+          >
+            <div>
+              <h3>장점</h3>
+              <ul>
+                <li>개발 속도 향상</li>
+                <li>초보자도 개발 가능</li>
+                <li>반복 작업 감소</li>
+              </ul>
             </div>
-            <div className="hero-stats">
-              <div className="stat"><span className="stat-number">22</span><span className="stat-label">커리큘럼 토픽</span></div>
-              <div className="stat"><span className="stat-number">9</span><span className="stat-label">실전 프로젝트</span></div>
-              <div className="stat"><span className="stat-number">28</span><span className="stat-label">일 부트캠프</span></div>
-              <div className="stat"><span className="stat-number">13</span><span className="stat-label">AI 도구 비교</span></div>
+
+            <div>
+              <h3>단점</h3>
+              <ul>
+                <li>코드 이해 부족 가능성</li>
+                <li>AI 오류 검증 필요</li>
+                <li>보안 문제 고려 필요</li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Features */}
-      <section className="features-section">
-        <div className="container">
-          <h2 className="section-title">왜 바이브코딩 마스터인가?</h2>
-          <div className="features-grid">
-            <Link to="/curriculum/beginner" className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
-              </div>
-              <h3>{t('home.curriculum')}</h3>
-              <p>{t('home.curriculumDesc')}</p>
-              <span className="feature-link">초급부터 시작 &rarr;</span>
-            </Link>
-
-            <Link to="/projects" className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
-                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-                </svg>
-              </div>
-              <h3>{t('home.projects')}</h3>
-              <p>{t('home.projectsDesc')}</p>
-              <span className="feature-link">프로젝트 보기 &rarr;</span>
-            </Link>
-
-            <Link to="/bootcamp" className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-              </div>
-              <h3>{t('home.bootcamp')}</h3>
-              <p>{t('home.bootcampDesc')}</p>
-              <span className="feature-link">부트캠프 참여 &rarr;</span>
-            </Link>
-
-            <Link to="/tools" className="feature-card">
-              <div className="feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
-                  <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-              </div>
-              <h3>{t('home.tools')}</h3>
-              <p>{t('home.toolsDesc')}</p>
-              <span className="feature-link">도구 비교 보기 &rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Roadmap */}
-      <section className="roadmap-section">
-        <div className="container">
-          <h2 className="section-title">학습 로드맵</h2>
-          <div className="roadmap">
-            <div className="roadmap-step">
-              <div className="roadmap-badge level-beginner">초급</div>
-              <h3>입문 & 기초</h3>
-              <p>AI 코딩 도구 이해, 프롬프트 작성, 첫 앱 만들기</p>
-              <span>7개 토픽 + 3개 프로젝트</span>
-            </div>
-            <div className="roadmap-arrow">&rarr;</div>
-            <div className="roadmap-step">
-              <div className="roadmap-badge level-intermediate">중급</div>
-              <h3>실전 & 심화</h3>
-              <p>Cursor/Claude Code 활용, 풀스택 개발, 코드리뷰</p>
-              <span>7개 토픽 + 3개 프로젝트</span>
-            </div>
-            <div className="roadmap-arrow">&rarr;</div>
-            <div className="roadmap-step">
-              <div className="roadmap-badge level-advanced">고급</div>
-              <h3>마스터 & 자동화</h3>
-              <p>멀티에이전트, MCP, Spec-Driven 개발</p>
-              <span>8개 토픽 + 3개 프로젝트</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="cta-section">
-        <div className="container">
-          <h2>지금 바로 시작하세요</h2>
-          <p>무료로 모든 커리큘럼과 프로젝트 가이드를 이용할 수 있습니다.</p>
-          <div className="hero-actions">
-            <Link to="/curriculum/beginner" className="btn btn-primary btn-lg">
-              초급부터 시작하기
-            </Link>
-            <Link to="/bootcamp" className="btn btn-outline btn-lg">
-              28일 부트캠프
-            </Link>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 };
